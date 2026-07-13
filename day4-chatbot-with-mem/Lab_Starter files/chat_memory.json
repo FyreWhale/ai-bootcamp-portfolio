@@ -1,0 +1,197 @@
+[
+    {
+        "role": "assistant",
+        "content": "Prior Interaction on 2026-05-01 - Topic: Prompt engineering. Summary: The learner practiced using role, instruction, context, constraints, and examples to improve model responses.",
+        "timestamp": "2026-05-01T00:00:00"
+    },
+    {
+        "role": "assistant",
+        "content": "Prior Interaction on 2026-05-01 - Topic: Gradio. Summary: The learner built a simple chatbot interface using Gradio ChatInterface.",
+        "timestamp": "2026-05-01T00:00:00"
+    },
+    {
+        "role": "assistant",
+        "content": "Prior Interaction on 2026-05-02 - Topic: Stateless chatbot. Summary: The learner learned that without memory, each input is treated independently.",
+        "timestamp": "2026-05-02T00:00:00"
+    },
+    {
+        "role": "assistant",
+        "content": "Prior Interaction on 2026-05-02 - Topic: Basic memory. Summary: The learner learned that appending chat history helps the bot remember but causes the prompt to grow quickly.",
+        "timestamp": "2026-05-02T00:00:00"
+    },
+    {
+        "role": "assistant",
+        "content": "Saved Fact: The learner is working on Project 1: Context-Aware Chatbot with Memory.",
+        "timestamp": "2026-07-13T15:59:12.795035"
+    },
+    {
+        "role": "assistant",
+        "content": "Saved Fact: The learner has not learned full RAG yet.",
+        "timestamp": "2026-07-13T15:59:12.795056"
+    },
+    {
+        "role": "assistant",
+        "content": "Saved Fact: The learner should focus on memory, retrieval, and prompt structure first.",
+        "timestamp": "2026-07-13T15:59:12.795060"
+    },
+    {
+        "role": "user",
+        "content": "what is my name?",
+        "timestamp": "2026-07-13T16:20:17.549630"
+    },
+    {
+        "role": "assistant",
+        "content": "Gemini API Error: 'Client' object has no attribute 'GenerativeModel'.",
+        "timestamp": "2026-07-13T16:20:17.572582"
+    },
+    {
+        "role": "user",
+        "content": "what is my name",
+        "timestamp": "2026-07-13T16:22:23.485744"
+    },
+    {
+        "role": "assistant",
+        "content": "Gemini API Error: 'Models' object is not callable.",
+        "timestamp": "2026-07-13T16:22:23.508582"
+    },
+    {
+        "role": "user",
+        "content": "What is my name",
+        "timestamp": "2026-07-13T16:26:57.927961"
+    },
+    {
+        "role": "assistant",
+        "content": "Your name is Alex",
+        "timestamp": "2026-07-13T16:26:57.957351"
+    },
+    {
+        "role": "user",
+        "content": "what is my name",
+        "timestamp": "2026-07-13T16:27:05.158454"
+    },
+    {
+        "role": "assistant",
+        "content": "Your name is Alex.",
+        "timestamp": "2026-07-13T16:27:05.186431"
+    },
+    {
+        "role": "user",
+        "content": "what is my name",
+        "timestamp": "2026-07-13T16:30:14.178634"
+    },
+    {
+        "role": "assistant",
+        "content": "Your name is Alex.",
+        "timestamp": "2026-07-13T16:30:14.203068"
+    },
+    {
+        "role": "user",
+        "content": "what is my name?",
+        "timestamp": "2026-07-13T16:30:21.415787"
+    },
+    {
+        "role": "assistant",
+        "content": "Your name is Alex.",
+        "timestamp": "2026-07-13T16:30:21.440298"
+    },
+    {
+        "role": "user",
+        "content": "what did i previously learn?",
+        "timestamp": "2026-07-13T16:31:02.503831"
+    },
+    {
+        "role": "assistant",
+        "content": "You previously learned the following skills:\n\n1. Python basics\n2. Basic prompt engineering\n3. Simple Gradio interfaces\n4. Calling AI APIs\n\nYou are currently working on improving the following weak areas:\n\n1. Database design\n2. API integration\n3. Understanding chatbot memory",
+        "timestamp": "2026-07-13T16:31:02.526444"
+    },
+    {
+        "role": "user",
+        "content": "What did i previously learn?",
+        "timestamp": "2026-07-13T16:31:14.810644"
+    },
+    {
+        "role": "assistant",
+        "content": "You previously learned the following skills:\n\n1. Python basics\n2. Basic prompt engineering\n3. Simple Gradio interfaces\n4. Calling AI APIs\n\nYou are currently working on improving the following weak areas:\n\n1. Database design\n2. API integration\n3. Understanding chatbot memory",
+        "timestamp": "2026-07-13T16:31:14.838181"
+    },
+    {
+        "role": "user",
+        "content": "who are u?",
+        "timestamp": "2026-07-13T16:31:26.873437"
+    },
+    {
+        "role": "assistant",
+        "content": "I am your AI assistant, here to help you achieve your goal of becoming an AI Engineer by providing simple explanations, step-by-step examples, and short code demos tailored to your learning style.",
+        "timestamp": "2026-07-13T16:31:26.899969"
+    },
+    {
+        "role": "user",
+        "content": "what model are u?",
+        "timestamp": "2026-07-13T16:31:34.805170"
+    },
+    {
+        "role": "assistant",
+        "content": "I don't know.",
+        "timestamp": "2026-07-13T16:31:34.829540"
+    },
+    {
+        "role": "user",
+        "content": "who am i talking to?",
+        "timestamp": "2026-07-13T16:31:43.848514"
+    },
+    {
+        "role": "assistant",
+        "content": "You are talking to your AI assistant, specifically assigned to help you reach your goal of becoming an AI Engineer based on your profile as Alex (User ID: user_01).",
+        "timestamp": "2026-07-13T16:31:43.879215"
+    },
+    {
+        "role": "user",
+        "content": "who developed u?",
+        "timestamp": "2026-07-13T16:31:52.981156"
+    },
+    {
+        "role": "assistant",
+        "content": "I don't know.",
+        "timestamp": "2026-07-13T16:31:53.004033"
+    },
+    {
+        "role": "user",
+        "content": "who are u?",
+        "timestamp": "2026-07-13T16:33:15.387393"
+    },
+    {
+        "role": "assistant",
+        "content": "I'm your helpful AI assistant. I was created to assist users like you in their learning journey. I'm designed to provide clear, step-by-step explanations and help you overcome areas where you need improvement, based on your learning goal and profile.",
+        "timestamp": "2026-07-13T16:33:15.415025"
+    },
+    {
+        "role": "user",
+        "content": "what model are u?",
+        "timestamp": "2026-07-13T16:33:22.876222"
+    },
+    {
+        "role": "assistant",
+        "content": "According to our past conversation, I found a relevant memory that indicates you asked me \"what model are u\" previously. Unfortunately, I don't have any specific information about my model available in our conversation so far. If you'd like to know more about text-based AI assistants like myself, I can provide general information about how they're developed or how they work. Would you like to learn more about that?",
+        "timestamp": "2026-07-13T16:33:22.906927"
+    },
+    {
+        "role": "user",
+        "content": "who are u?",
+        "timestamp": "2026-07-13T16:33:30.359979"
+    },
+    {
+        "role": "assistant",
+        "content": "I am your AI assistant, Alex! I\u2019m here to help you achieve your goal of becoming an AI Engineer. \n\nSince you're working on building practical AI applications, I can help you bridge those gaps in your skills\u2014like designing databases for your projects, managing API integrations, and implementing memory in your chatbots.\n\nHow would you like to start? We could do a quick, step-by-step demo on how to add \"memory\" to a simple Python chatbot, or we could look at how to structure a database to save user interactions. What sounds good to you?",
+        "timestamp": "2026-07-13T16:33:30.388137"
+    },
+    {
+        "role": "user",
+        "content": "what model are u ?",
+        "timestamp": "2026-07-13T16:33:36.676670"
+    },
+    {
+        "role": "assistant",
+        "content": "As an AI, I don't have a personal identity or a specific model name that I can identify myself with. I am a large language model, trained by Google.\n\nSince we are focused on your journey to becoming an AI Engineer, I\u2019d love to get back to your learning goals! Would you like to dive into one of those technical areas we identified, like how to implement memory in a chatbot or how to structure a database?",
+        "timestamp": "2026-07-13T16:33:36.702331"
+    }
+]
