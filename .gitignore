@@ -4,3 +4,4 @@ chroma_db/
 __pycache__/
 /.vs
 /day4-chatbot-with-mem/code snippets
+.streamlit/
