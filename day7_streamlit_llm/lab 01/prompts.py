@@ -204,28 +204,55 @@ Output ONLY a valid JSON object matching the schema above. No prose. No markdown
 """
 
 
-BACKGROUND_FIT_PROMPT = """
-INSTRUCTION
-Assess how well the candidate's stated education and experience plausibly align with the role requirements and generate a fit score.
+DEGREE_ALIGNMENT_PROMPT = """\
+You are a degree-alignment checker. You are given a JD profile JSON and the
+student's degree program code. You check whether the JD job title is on the
+suggested-titles list for the student's degree.
 
-CONTEXT
-You will receive the parsed résumé profile and the JD profile. Evaluate the alignment using ONLY the extracted education/experience fields and the stated JD requirements.
+Degree-Aligned Job Title Lists
+===============================
+RTIS (Real-Time Interactive Simulation):
+  Game Engine Developer, Systems Engineer, Site Reliability Engineer (SRE),
+  DevOps Engineer, AI/ML Engineer, Data Analyst / Data Scientist,
+  Full Stack Developer, Cybersecurity Engineer, Simulation Engineer,
+  Graphics Programmer, Technical Product Manager, Technical Project Manager
 
-CONSTRAINTS
-- Do not use external degree codes, tables, or external assumptions.
-- The `alignment_commentary` must be diagnostic only (2-3 sentences max).
-- Background fit score must be between 0 and 100.
-- Never rewrite the candidate's background to make it fit better.
+IMGD (Interactive Media & Game Development):
+  Game Developer, Systems Engineer, Full Stack Developer, Data Engineer,
+  Infrastructure Engineer, DevOps Engineer, Cybersecurity Engineer,
+  AI/ML Engineer, Technical Designer, Technical Artist,
+  Gameplay Programmer, Tools Engineer,
+  Technical Product Manager, Technical Project Manager
 
-OUTPUT
+UXGD (User Experience & Game Design):
+  App Developer, UI/UX Designer, Product Designer, Product Manager,
+  Product Operations Manager, Project Manager, Marketing & Design Specialist,
+  Process Architect, Technical Designer, Technical Artist,
+  UX Researcher, UX Engineer
+
+BFA (Digital Art and Animation):
+  Technical Artist, UI/UX Designer, Creative Designer, Unreal Engine Artist,
+  3D Graphic Artist, Production Assistant, Project Manager, Project Operations
+
+Matching rule:
+- title_on_suggested_list is true if the JD title matches an entry exactly OR
+  is a clear variant (e.g. "Junior Systems Engineer" matches "Systems Engineer").
+- If false, set degree_alignment_score to 50-70 with fit_commentary explaining
+  the mismatch. Never invent a match.
+
+JSON schema:
+
 {
-  "candidate_background_summary": "string (1-2 sentences)",
-  "role_requirements_summary": "string (1-2 sentences)",
-  "alignment_commentary": "string (2-3 sentences — diagnostic only)",
-  "background_fit_score": 0
+  "student_degree": "string",
+  "jd_title": "string",
+  "title_on_suggested_list": true,
+  "matched_against": "string",
+  "fit_commentary": "string (40 words or fewer)",
+  "degree_alignment_score": 100
 }
 
-Output ONLY a valid JSON object matching the schema above. No prose. No markdown fences. No commentary. Never rewrite or generate résumé content.
+Output ONLY a valid JSON object matching the schema above. No prose. No
+markdown fences. Never rewrite or generate résumé content.
 """
 
 

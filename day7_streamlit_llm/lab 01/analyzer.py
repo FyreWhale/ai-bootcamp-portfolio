@@ -21,8 +21,8 @@ from prompts import (
     KEYWORD_MATCH_PROMPT,
     BULLET_QUALITY_PROMPT,
     JARGON_AUDIT_PROMPT,
+    DEGREE_ALIGNMENT_PROMPT,
     STRUCTURE_AUDIT_PROMPT,
-    BACKGROUND_FIT_PROMPT,
     OVERALL_SUMMARY_PROMPT,
 )
 
@@ -130,25 +130,13 @@ def analyse_structure(resume_text: str) -> dict:
     return ask_json(STRUCTURE_AUDIT_PROMPT, user_message, temperature=0.0, max_tokens=1500)
 
 
-def analyse_degree_alignment(resume_profile: dict, jd_profile: dict) -> dict:
-    """
-    Assess how well the candidate's stated education/experience background
-    plausibly aligns with what this role is asking for.
-
-    Calls: ask_json(BACKGROUND_FIT_PROMPT, user, max_tokens=600)
-    User message format:
-        "RÉSUMÉ PROFILE:\\n{json_dump}\\n\\nJD PROFILE:\\n{json_dump}"
-
-    Args:
-        resume_profile: Output of extract_resume_profile().
-        jd_profile: Output of extract_jd_profile().
-
-    Returns:
-        Background fit dict with keys: background_fit_score, alignment_commentary, etc.
-    """
-    user_message = f"RÉSUMÉ PROFILE:\\n{json.dumps(resume_profile, indent=2)}\\n\\nJD PROFILE:\\n{json.dumps(jd_profile, indent=2)}"
-    return ask_json(BACKGROUND_FIT_PROMPT, user_message, max_tokens=600)
-
+def analyse_degree_alignment(jd_profile: dict, degree_program: str) -> dict:
+    """JD profile + degree -> degree alignment dict."""
+    user = (
+        f"DEGREE PROGRAM: {degree_program}\n\n"
+        f"JD PROFILE:\n{json.dumps(jd_profile, indent=2)}"
+    )
+    return ask_json(DEGREE_ALIGNMENT_PROMPT, user, max_tokens=600)
 
 def summarise_overall(report: dict) -> str:
     """
@@ -181,11 +169,11 @@ def compute_overall_score(report: dict) -> int:
     This function makes NO LLM call. It is pure Python arithmetic.
 
     Weights:
-        keyword_match_score  40%  (report["keyword_match"]["keyword_match_score"])
-        bullet_quality_avg   25%  (report["bullets"]["bullet_quality_avg"])
-        structure_score      15%  (report["structure"]["structure_score"])
-        jargon_score         10%  (report["jargon"]["jargon_score"])
-        background_fit_score 10%  (report["background_fit"]["background_fit_score"])
+        keyword_match_score    40%  (report["keyword_match"]["keyword_match_score"])
+        bullet_quality_avg     25%  (report["bullets"]["bullet_quality_avg"])
+        structure_score        15%  (report["structure"]["structure_score"])
+        jargon_score           10%  (report["jargon"]["jargon_score"])
+        degree_alignment_score 10% (report["degree_alignment"].get("degree_alignment_score", 0))
 
     Returns:
         int — weighted average, rounded to the nearest whole number.
@@ -194,14 +182,14 @@ def compute_overall_score(report: dict) -> int:
     bullet_quality_avg = report["bullets"]["bullet_quality_avg"]
     structure_score = report["structure"]["structure_score"]
     jargon_score = report["jargon"]["jargon_score"]
-    background_fit_score = report["background_fit"]["background_fit_score"]
+    degree_alignment_score = report["degree_alignment"].get("degree_alignment_score", 0)
 
     overall_score = (
-        0.4 * keyword_match_score +
-        0.25 * bullet_quality_avg +
-        0.15 * structure_score +
-        0.1 * jargon_score +
-        0.1 * background_fit_score
+        keyword_match_score         * 0.40
+        + bullet_quality_avg        * 0.25
+        + structure_score           * 0.15
+        + jargon_score              * 0.10
+        + degree_alignment_score    * 0.10
     )
 
     return round(overall_score)

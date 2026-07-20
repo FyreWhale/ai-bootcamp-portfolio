@@ -27,7 +27,7 @@ def _build_lines(report: dict) -> list[str]:
     bullets = report.get("bullets", {})
     jargon  = report.get("jargon", {})
     struct  = report.get("structure", {})
-    bg      = report.get("background_fit", {})
+    degree  = report.get("degree_alignment", {})
     score   = report.get("overall_score", 0)
     passes  = report.get("passes_ats_threshold", False)
     summary = report.get("summary", "")
@@ -164,15 +164,15 @@ def _build_lines(report: dict) -> list[str]:
         lines.append("No ATS red flags detected. ✓")
     lines.append("")
 
-    # 7. Background fit
+    # 7. Degree alignment
     lines += [
-        "## Background Fit",
+        "## Degree Alignment",
         "",
-        f"**Score:** {bg.get('background_fit_score', 0)}/100",
+        f"**Score:** {degree.get('degree_alignment_score', 0)}/100",
         "",
-        f"**Candidate background:** {bg.get('candidate_background_summary', '')}  ",
-        f"**Role expects:** {bg.get('role_requirements_summary', '')}  ",
-        f"**Commentary:** {bg.get('alignment_commentary', '')}",
+        f"**Candidate degree:** {degree.get('candidate_background_summary', '')}  ",
+        f"**Role expects:** {degree.get('role_requirements_summary', '')}  ",
+        f"**Commentary:** {degree.get('alignment_commentary', '')}",
         "",
     ]
 
@@ -181,7 +181,7 @@ def _build_lines(report: dict) -> list[str]:
     bq_contrib  = round(bullets.get("bullet_quality_avg", 0) * 0.25, 1)
     st_contrib  = round(struct.get("structure_score", 0) * 0.15, 1)
     ja_contrib  = round(jargon.get("jargon_score", 0) * 0.10, 1)
-    bg_contrib  = round(bg.get("background_fit_score", 0) * 0.10, 1)
+    degree_contrib = round(degree.get("degree_alignment_score", 0) * 0.10, 1)
     lines += [
         "## Score Breakdown",
         "",
@@ -191,7 +191,7 @@ def _build_lines(report: dict) -> list[str]:
         f"| Bullet quality   | {bullets.get('bullet_quality_avg', 0)} | 25% | {bq_contrib} |",
         f"| Structure        | {struct.get('structure_score', 0)} | 15% | {st_contrib} |",
         f"| Jargon           | {jargon.get('jargon_score', 0)} | 10% | {ja_contrib} |",
-        f"| Background fit   | {bg.get('background_fit_score', 0)} | 10% | {bg_contrib} |",
+        f"| Degree alignment | {degree.get('degree_alignment_score', 0)} | 10% | {degree_contrib} |",
         f"| **Total**        |     |     | **{score}** |",
         "",
     ]
