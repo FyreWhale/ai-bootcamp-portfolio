@@ -38,26 +38,29 @@ if run:
     print("[4/8] Analyzing keyword match...")
     keyword_match = analyse_keyword_match(resume_profile, jd_profile)
 
+    print("[5/8] Analyzing degree alignment...")
+    degree = analyse_degree_alignment(resume_profile, jd_profile)
+
     print("[6/8] Analyzing bullets...")
     bullets = analyse_bullets(resume_profile)
-
-    print("[6/8] Analyzing jargon...")
-    jargon = analyse_jargon(resume_profile, jd_profile)
 
     print("[7/8] Analyzing structure...")
     structure = analyse_structure(resume_text)
 
-    print("[8/8] Analyzing degree alignment...")
-    background_fit = analyse_degree_alignment(resume_profile, jd_profile)
+    print("[8/8] Analyzing jargon...")
+    jargon = analyse_jargon(resume_profile, jd_profile)
     
     report = {
+        "meta": {
+            "generated_at": st.session_state.get("generated_at", ""),
+        },
         "resume_profile": resume_profile,
         "jd_profile": jd_profile,
         "keyword_match": keyword_match,
         "bullets": bullets,
         "jargon": jargon,
         "structure": structure,
-        "background_fit": background_fit,
+        "degree_alignment": degree,
     }
 
     print("Computing overall score...")
